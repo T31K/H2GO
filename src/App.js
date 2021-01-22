@@ -2,9 +2,10 @@ import './App.css';
 import React, {useState} from 'react'
 import { useTimer } from 'react-timer-hook';
 import DarkModeToggle from "react-dark-mode-toggle";
+import logo from "./h2go.svg"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faStop } from '@fortawesome/free-solid-svg-icons'
+import { faPlayCircle, faPauseCircle } from '@fortawesome/free-solid-svg-icons'
 
 function MyTimer({ expiryTimestamp }) {
   const {
@@ -22,24 +23,36 @@ function MyTimer({ expiryTimestamp }) {
 
   return (
     <div style={{textAlign: 'center'}}>
-          <div className="ocean">
-      <div className="wave"></div>
-      <div className="wave"></div>
-      
-    </div>
+    
       <h1>H2GO</h1>
+      <img src={logo} className="logo"/>
       <div style={{fontSize: '100px'}}>
        <span>0{minutes}</span>:<span>{seconds}</span>
       </div>
-      <p>{isRunning ? 'Running' : 'Not running'}</p>
-      <FontAwesomeIcon icon={faPlay} onClick={start} className="start" />
-      <FontAwesomeIcon icon={faStop} onClick={pause} className="stop"/>
-      <button onClick={() => {
+      {isRunning ? 
+      <div>
+      <div className="ocean">
+        <div className="wave "></div>
+        <div className="wave "></div>
+      </div>
+      <FontAwesomeIcon icon={faPauseCircle} onClick={pause} className="stop" />
+      </div>
+      : 
+      <div>
+      <div className="ocean">
+        <div className="wave pause-animation"></div>
+        <div className="wave pause-animation"></div>
+      </div>
+      <FontAwesomeIcon icon={faPlayCircle} onClick={start} className="start"/> 
+      </div>
+      }
+
+      {/* <button onClick={() => {
         // Restarts to 5 minutes timer
         const time = new Date();
         time.setSeconds(time.getSeconds() + 300);
         restart(time)
-      }}>Restart</button>
+      }}>Restart</button> */}
     </div>
   );
 }
