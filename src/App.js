@@ -14,13 +14,14 @@ function MyTimer({ expiryTimestamp }) {
     hours,
     days,
     isRunning,
+    onExpire,
     start,
     pause,
     resume,
     restart,
-  } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+  } = useTimer({ expiryTimestamp, onExpire: () => console.log('onExpire called') });
 
-
+  
   return (
     <div style={{textAlign: 'center'}}>
     
@@ -47,12 +48,12 @@ function MyTimer({ expiryTimestamp }) {
       </div>
       }
 
-      {/* <button onClick={() => {
+      <button onClick={() => {
         // Restarts to 5 minutes timer
         const time = new Date();
         time.setSeconds(time.getSeconds() + 300);
         restart(time)
-      }}>Restart</button> */}
+      }}>Restart</button>
     </div>
   );
 }
@@ -60,7 +61,7 @@ function MyTimer({ expiryTimestamp }) {
 export default function App() {
 
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
+  time.setSeconds(time.getSeconds() + 10); // 10 minutes timer
   return (
     <div>
    
