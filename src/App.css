@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
+
 html, body {
   height: 100%;
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  color: #3c3c3c;
+
 }
 
 body {
@@ -71,6 +76,15 @@ body {
     -webkit-transform: translate3d(0, 5px, 0);
             transform: translate3d(0, 5px, 0);
   }
+}
+
+
+.start:hover, .stop:hover{
+  color: #7b7b7b;
+}
+
+.start:active, .stop:active{
+  color: #015871;
 }
 
 
